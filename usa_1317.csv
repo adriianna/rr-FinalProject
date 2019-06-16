@@ -1,0 +1,291 @@
+Country;Month;Year;Purpose;Visitors
+USA;10;2017;Holiday;14416
+USA;10;2017;Visiting friends & relatives;3184
+USA;10;2017;Business;2368
+USA;10;2017;Education;160
+USA;10;2017;Conferences & conventions;544
+USA;10;2016;Holiday;14016
+USA;10;2016;Visiting friends & relatives;2960
+USA;10;2016;Business;2032
+USA;10;2016;Education;176
+USA;10;2016;Conferences & conventions;608
+USA;10;2015;Holiday;9936
+USA;10;2015;Visiting friends & relatives;2640
+USA;10;2015;Business;1696
+USA;10;2015;Education;224
+USA;10;2015;Conferences & conventions;416
+USA;10;2014;Holiday;9904
+USA;10;2014;Visiting friends & relatives;2272
+USA;10;2014;Business;1744
+USA;10;2014;Education;128
+USA;10;2014;Conferences & conventions;320
+USA;10;2013;Holiday;7920
+USA;10;2013;Visiting friends & relatives;2080
+USA;10;2013;Business;2048
+USA;10;2013;Education;144
+USA;10;2013;Conferences & conventions;304
+USA;9;2017;Holiday;7840
+USA;9;2017;Visiting friends & relatives;2096
+USA;9;2017;Business;1600
+USA;9;2017;Education;512
+USA;9;2017;Conferences & conventions;368
+USA;9;2016;Holiday;9456
+USA;9;2016;Visiting friends & relatives;2944
+USA;9;2016;Business;1200
+USA;9;2016;Education;368
+USA;9;2016;Conferences & conventions;288
+USA;9;2015;Holiday;6688
+USA;9;2015;Visiting friends & relatives;1984
+USA;9;2015;Business;1616
+USA;9;2015;Education;208
+USA;9;2015;Conferences & conventions;304
+USA;9;2014;Holiday;5296
+USA;9;2014;Visiting friends & relatives;2224
+USA;9;2014;Business;1568
+USA;9;2014;Education;336
+USA;9;2014;Conferences & conventions;208
+USA;9;2013;Holiday;4688
+USA;9;2013;Visiting friends & relatives;2000
+USA;9;2013;Business;1488
+USA;9;2013;Education;224
+USA;9;2013;Conferences & conventions;352
+USA;8;2017;Holiday;6192
+USA;8;2017;Visiting friends & relatives;3056
+USA;8;2017;Business;1952
+USA;8;2017;Education;160
+USA;8;2017;Conferences & conventions;416
+USA;8;2016;Holiday;8032
+USA;8;2016;Visiting friends & relatives;3376
+USA;8;2016;Business;1616
+USA;8;2016;Education;240
+USA;8;2016;Conferences & conventions;368
+USA;8;2015;Holiday;4656
+USA;8;2015;Visiting friends & relatives;2800
+USA;8;2015;Business;1632
+USA;8;2015;Education;128
+USA;8;2015;Conferences & conventions;432
+USA;8;2014;Holiday;3840
+USA;8;2014;Visiting friends & relatives;2656
+USA;8;2014;Business;1760
+USA;8;2014;Education;192
+USA;8;2014;Conferences & conventions;400
+USA;8;2013;Holiday;4128
+USA;8;2013;Visiting friends & relatives;2496
+USA;8;2013;Business;1296
+USA;8;2013;Education;176
+USA;8;2013;Conferences & conventions;176
+USA;7;2017;Holiday;8080
+USA;7;2017;Visiting friends & relatives;3488
+USA;7;2017;Business;1232
+USA;7;2017;Education;912
+USA;7;2017;Conferences & conventions;368
+USA;7;2016;Holiday;8624
+USA;7;2016;Visiting friends & relatives;4144
+USA;7;2016;Business;1504
+USA;7;2016;Education;1440
+USA;7;2016;Conferences & conventions;256
+USA;7;2015;Holiday;5408
+USA;7;2015;Visiting friends & relatives;3232
+USA;7;2015;Business;1504
+USA;7;2015;Education;1184
+USA;7;2015;Conferences & conventions;368
+USA;7;2014;Holiday;4528
+USA;7;2014;Visiting friends & relatives;2832
+USA;7;2014;Business;992
+USA;7;2014;Education;1168
+USA;7;2014;Conferences & conventions;288
+USA;7;2013;Holiday;4512
+USA;7;2013;Visiting friends & relatives;2704
+USA;7;2013;Business;1312
+USA;7;2013;Education;832
+USA;7;2013;Conferences & conventions;416
+USA;6;2017;Holiday;9648
+USA;6;2017;Visiting friends & relatives;4336
+USA;6;2017;Business;1632
+USA;6;2017;Education;1248
+USA;6;2017;Conferences & conventions;400
+USA;6;2016;Holiday;8976
+USA;6;2016;Visiting friends & relatives;3440
+USA;6;2016;Business;1376
+USA;6;2016;Education;880
+USA;6;2016;Conferences & conventions;224
+USA;6;2015;Holiday;6816
+USA;6;2015;Visiting friends & relatives;2800
+USA;6;2015;Business;1504
+USA;6;2015;Education;944
+USA;6;2015;Conferences & conventions;384
+USA;6;2014;Holiday;5776
+USA;6;2014;Visiting friends & relatives;2928
+USA;6;2014;Business;1184
+USA;6;2014;Education;880
+USA;6;2014;Conferences & conventions;96
+USA;6;2013;Holiday;5104
+USA;6;2013;Visiting friends & relatives;2752
+USA;6;2013;Business;1360
+USA;6;2013;Education;800
+USA;6;2013;Conferences & conventions;112
+USA;5;2017;Holiday;9504
+USA;5;2017;Visiting friends & relatives;3232
+USA;5;2017;Business;1616
+USA;5;2017;Education;992
+USA;5;2017;Conferences & conventions;736
+USA;5;2016;Holiday;7312
+USA;5;2016;Visiting friends & relatives;3216
+USA;5;2016;Business;1520
+USA;5;2016;Education;1152
+USA;5;2016;Conferences & conventions;448
+USA;5;2015;Holiday;7344
+USA;5;2015;Visiting friends & relatives;2576
+USA;5;2015;Business;1568
+USA;5;2015;Education;720
+USA;5;2015;Conferences & conventions;240
+USA;5;2014;Holiday;6256
+USA;5;2014;Visiting friends & relatives;2272
+USA;5;2014;Business;1472
+USA;5;2014;Education;880
+USA;5;2014;Conferences & conventions;448
+USA;5;2013;Holiday;4816
+USA;5;2013;Visiting friends & relatives;2480
+USA;5;2013;Business;1440
+USA;5;2013;Education;608
+USA;5;2013;Conferences & conventions;192
+USA;4;2017;Holiday;16224
+USA;4;2017;Visiting friends & relatives;4320
+USA;4;2017;Business;1600
+USA;4;2017;Education;560
+USA;4;2017;Conferences & conventions;368
+USA;4;2016;Holiday;10432
+USA;4;2016;Visiting friends & relatives;3232
+USA;4;2016;Business;1808
+USA;4;2016;Education;336
+USA;4;2016;Conferences & conventions;576
+USA;4;2015;Holiday;10448
+USA;4;2015;Visiting friends & relatives;3376
+USA;4;2015;Business;1584
+USA;4;2015;Education;432
+USA;4;2015;Conferences & conventions;240
+USA;4;2014;Holiday;8304
+USA;4;2014;Visiting friends & relatives;2784
+USA;4;2014;Business;1488
+USA;4;2014;Education;288
+USA;4;2014;Conferences & conventions;400
+USA;4;2013;Holiday;6800
+USA;4;2013;Visiting friends & relatives;2704
+USA;4;2013;Business;1808
+USA;4;2013;Education;240
+USA;4;2013;Conferences & conventions;352
+USA;3;2017;Holiday;26016
+USA;3;2017;Visiting friends & relatives;6304
+USA;3;2017;Business;2752
+USA;3;2017;Education;688
+USA;3;2017;Conferences & conventions;768
+USA;3;2016;Holiday;22768
+USA;3;2016;Visiting friends & relatives;5264
+USA;3;2016;Business;2144
+USA;3;2016;Education;384
+USA;3;2016;Conferences & conventions;576
+USA;3;2015;Holiday;17664
+USA;3;2015;Visiting friends & relatives;4960
+USA;3;2015;Business;2288
+USA;3;2015;Education;512
+USA;3;2015;Conferences & conventions;272
+USA;3;2014;Holiday;17792
+USA;3;2014;Visiting friends & relatives;4800
+USA;3;2014;Business;2464
+USA;3;2014;Education;160
+USA;3;2014;Conferences & conventions;256
+USA;3;2013;Holiday;16016
+USA;3;2013;Visiting friends & relatives;4816
+USA;3;2013;Business;1952
+USA;3;2013;Education;224
+USA;3;2013;Conferences & conventions;352
+USA;2;2017;Holiday;33632
+USA;2;2017;Visiting friends & relatives;7808
+USA;2;2017;Business;2208
+USA;2;2017;Education;1280
+USA;2;2017;Conferences & conventions;496
+USA;2;2016;Holiday;25376
+USA;2;2016;Visiting friends & relatives;6208
+USA;2;2016;Business;2448
+USA;2;2016;Education;1200
+USA;2;2016;Conferences & conventions;272
+USA;2;2015;Holiday;25424
+USA;2;2015;Visiting friends & relatives;5968
+USA;2;2015;Business;1984
+USA;2;2015;Education;1232
+USA;2;2015;Conferences & conventions;448
+USA;2;2014;Holiday;21728
+USA;2;2014;Visiting friends & relatives;5024
+USA;2;2014;Business;2240
+USA;2;2014;Education;1008
+USA;2;2014;Conferences & conventions;416
+USA;2;2013;Holiday;18064
+USA;2;2013;Visiting friends & relatives;4304
+USA;2;2013;Business;2272
+USA;2;2013;Education;880
+USA;2;2013;Conferences & conventions;256
+USA;1;2017;Holiday;22704
+USA;1;2017;Visiting friends & relatives;5904
+USA;1;2017;Business;2128
+USA;1;2017;Education;1152
+USA;1;2017;Conferences & conventions;336
+USA;1;2016;Holiday;19184
+USA;1;2016;Visiting friends & relatives;5168
+USA;1;2016;Business;2128
+USA;1;2016;Education;848
+USA;1;2016;Conferences & conventions;304
+USA;1;2015;Holiday;16352
+USA;1;2015;Visiting friends & relatives;4112
+USA;1;2015;Business;1584
+USA;1;2015;Education;944
+USA;1;2015;Conferences & conventions;432
+USA;1;2014;Holiday;15152
+USA;1;2014;Visiting friends & relatives;3888
+USA;1;2014;Business;1824
+USA;1;2014;Education;1072
+USA;1;2014;Conferences & conventions;240
+USA;1;2013;Holiday;16800
+USA;1;2013;Visiting friends & relatives;3040
+USA;1;2013;Business;1392
+USA;1;2013;Education;1056
+USA;1;2013;Conferences & conventions;1104
+USA;11;2016;Holiday;24864
+USA;11;2016;Visiting friends & relatives;4720
+USA;11;2016;Business;2032
+USA;11;2016;Education;416
+USA;11;2016;Conferences & conventions;576
+USA;11;2015;Holiday;18976
+USA;11;2015;Visiting friends & relatives;3552
+USA;11;2015;Business;1984
+USA;11;2015;Education;192
+USA;11;2015;Conferences & conventions;784
+USA;11;2014;Holiday;16800
+USA;11;2014;Visiting friends & relatives;3728
+USA;11;2014;Business;1936
+USA;11;2014;Education;400
+USA;11;2014;Conferences & conventions;336
+USA;11;2013;Holiday;14544
+USA;11;2013;Visiting friends & relatives;3440
+USA;11;2013;Business;2048
+USA;11;2013;Education;208
+USA;11;2013;Conferences & conventions;208
+USA;12;2016;Holiday;28528
+USA;12;2016;Visiting friends & relatives;10576
+USA;12;2016;Business;1440
+USA;12;2016;Education;512
+USA;12;2016;Conferences & conventions;304
+USA;12;2015;Holiday;21280
+USA;12;2015;Visiting friends & relatives;9216
+USA;12;2015;Business;1104
+USA;12;2015;Education;560
+USA;12;2015;Conferences & conventions;192
+USA;12;2014;Holiday;18832
+USA;12;2014;Visiting friends & relatives;8288
+USA;12;2014;Business;1232
+USA;12;2014;Education;496
+USA;12;2014;Conferences & conventions;480
+USA;12;2013;Holiday;16832
+USA;12;2013;Visiting friends & relatives;8416
+USA;12;2013;Business;1344
+USA;12;2013;Education;608
+USA;12;2013;Conferences & conventions;512
