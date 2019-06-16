@@ -30,4 +30,3 @@ function(start, end)
 {
   checkDateRange(start,end)
 }
-
