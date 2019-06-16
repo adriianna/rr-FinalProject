@@ -1,13 +1,13 @@
 source(here::here("src/functions/fcreateReportLink.R"))
 checkDateRange = function(start, end)
 {
-  australia=read.csv("C:/Users/Szymon/Desktop/RR_zaj/projekt/australia_1317.csv",header=TRUE,sep=';')
-  usa=read.csv("C:/Users/Szymon/Desktop/RR_zaj/projekt/usa_1317.csv",header=TRUE,sep=';')
+  australia=read.csv(here::here("australia_1317.csv"),header=TRUE,sep=';')
+  usa=read.csv(here::here("usa_1317.csv"),header=TRUE,sep=';')
   result <- ""
   
   if (missing(start) | missing(end))
   {
-    result <- "Wprowadz dwie daty"
+    result <- "Insert date range (years):"
   }
   
   else
