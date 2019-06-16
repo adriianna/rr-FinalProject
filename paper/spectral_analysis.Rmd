@@ -1,0 +1,156 @@
+---
+title: "Analiza spektralna sezonowości w turystyce Nowej Zelandii"
+author: "Adrianna Lewandowska"
+date: "`r Sys.time()`"
+output: html_document
+fontsize: 12pt
+params:
+  miny: ""
+  maxy: ""
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,cache = FALSE)
+
+```
+## 1. Przedmiot i cel badania
+<div style="text-align: justify">
+Problem identyfikacji sezonowości podróży jest jedną z bardziej istotnych kwestii poruszanych w badaniach z zakresu turystyki. Sezonowość jest bowiem potrzebna nie tylko do prognozowania popytu na usługi turystyczne, ale także do planowania odpowiednich procedur lub przepisów mających zapewnić bezpieczeństwo oraz odpowiednią przepustowość dróg, lotnisk czy dworców w trakcie pobytu zwiększonej ilości podróżujących. W niniejszym opracowaniu badaniu została poddana turystyka Nowej Zelandii w latach 2013-2017. Z uwagi na fakt, iż turyści z Australii oraz USA stanowią zdecydowaną większość turystów odwiedzających tereny Nowej Zelandii, badanie zostało przeprowadzone na próbie zawierającej informacje dotyczące tych dwóch rynków. 
+
+Głównym celem niniejszego badania jest pokazanie, że analiza danych zdezagregowanych  może przynieść lepsze rezultaty i pozwoli na bardziej precyzyjne wychwycenie cykliczności turystyki. Wnioski uzyskane w wyniku badania zostaną następnie poddane porównaniu z wynikami analogicznej analizy przeprowadzonej na danych z lat 1980-2007 w artykule „Spectral analysis of seasonality in tourism demand”. W związku z celem badawczym, w analizie wyodrębniono trzy grupy podróży ze względu na cel  – podróże biznesowe, podróże wypoczynkowe (wakacje, wycieczki) i podróże, których celem jest odwiedzenie bliskich i znajomych. Każda z grup została wyodrębniona zarówno wśród turystów z Australii jak i USA.  Australia to dla Nowej Zelandii jeden z kluczowych partnerów gospodarczych, z którym łączą ją liczne ekonomiczne porozumienia. W związku z tym podróżujący z Australii bardzo często odwiedzają Nową Zelandię w celach związanych z biznesem. Jak wynika z Wykresu 1 tego typu podróżujący stanowią niemal jedną piątą wszystkich odwiedzających Nową Zelandię w latach 2013-2017. Australia i Nowa Zelandia podpisały w 1973 roku tzw “Trans-Tasman Travel Arrangement“, który umożliwia obywatelom Nowej Zelandii do zamieszkania, życia i pracy w Australii, natomiast obywatelom Australii w Nowej Zelandii.  Ze względu na fakt, iż Australia jest krajem bardziej rozwiniętym gospodarczo, duża część mieszkańców Nowej Zelandii decyduje się na emigrację. Efekty tego widać na Wykresie 1, z którego wynika, że 41% odwiedzających Nową Zelandię udaje się tam by odwiedzić rodzinę i przyjaciół. Kolejne 41% podróżujących z Australii z kolei udaje się do NZ w celach wypoczynkowych. Zupełnie inny obraz kształtuje się w wyniku analizy procentowego rozkładu celu podróży dla turystów z USA. Kraje te charakteryzuje mniejsza więź gospodarcza, jednak wśród mieszkańców USA Nowa Zelandia od zawsze cieszyła się dużą popularnością w kontekście wypoczynkowym. Podróżujący w celach wypoczynkowych stanowią więc 66% całości, natomiast podróże biznesowe na tym rynku to zaledwie 10%. 
+</div>
+
+**Wykres 1 Liczba podróży z Australii do Nowej Zelandii (całkowita i w podziale na cel podróży)**
+```{r, echo=FALSE, message = FALSE}
+message(params$miny)
+minyear <<- params$miny
+maxyear <<- params$maxy
+source(here::here("update_data.R"))
+
+usa_slices= c(sum(holiday_usa$Visitors), sum(friends_usa$Visitors), sum(business_usa$Visitors),
+              sum(total_usa$Visitors-(holiday_usa$Visitors+friends_usa$Visitors+business_usa$Visitors)))
+usa_lbls= c("Holiday","Visiting friends & relatives","Business","Other")
+pct= round(usa_slices/sum(usa_slices)*100)
+usa_lbls=paste(usa_lbls, pct)
+usa_lbls= paste(usa_lbls,"%",sep="")
+
+pie(usa_slices, labels=usa_lbls, col=c("lavenderblush2","cadetblue3","darkseagreen3","tan")
+    ,main="USA")
+
+aus_slices= c(sum(holiday_australia$Visitors), sum(friends_australia$Visitors), sum(business_australia$Visitors),
+              sum(total_australia$Visitors-(holiday_australia$Visitors+friends_australia$Visitors+business_australia$Visitors)))
+aus_lbls= c("Holiday","Visiting friends & relatives", "Business" , "Other")
+pct= round(aus_slices/sum(aus_slices)*100)
+aus_lbls=paste(aus_lbls, pct)
+aus_lbls= paste(aus_lbls,"%",sep="")
+
+pie(aus_slices, labels=aus_lbls, col=c("lavenderblush2","cadetblue3","darkseagreen3","tan")
+    ,main="Australia")
+```
+
+## 2. Metoda i wyniki
+<div style="text-align: justify">
+W celu wykrycia cykli w podróżach do Nowej Zelandii posłużono się analizą spektralną, która pozwala na zbadanie występowania wahań o poszczególnych częstościach w szeregu czasowym. Analizę częstotliwościową stosuje się do określenia składowych częstotliwościowych zawartych w przebiegu czasowym funkcji. W bardzo znacznym stopniu stosowana jest ona w przetwarzaniu sygnałów. Przedstawienie sygnału w dziedzinie częstotliwości nazywane jest widmem sygnału. Widmo sygnału jest jego graficznym przedstawieniem otrzymanym przy pomocy transformaty Fouriera. Wykres widma jest graficznym przedstawieniem transformaty Fouriera jako funkcji częstotliwości. Z takiego wykresu można odczytać jakie składowe harmoniczne wchodzą w skład danego sygnału, czy zawiera on składowe wolnozmienne (o małych częstotliwościach) oraz szybko zmienne (o dużych częstotliwościach). 
+
+Jednym ze sposobów rozumienia analizy spektralnej jest problem regresji liniowej, w którym zmienną zależną jest obserwowany szereg, a zmiennymi niezależnymi są funkcje sinus i cosinus dla wszystkich możliwych częstości. Zakładając, że szereg czasowy $x_{t}$ charakteryzuje się długością T oraz, że n jest parzyste, wówczas model regresji dla $x_{t}$ jest szacowany na poniższych n-1 zmiennych :
+
+\begin{equation}
+  \cos(\frac{2\pi t}{T}), sin(\frac{2\pi t}{T}),...,cos(\frac{2(n/2)-1)\pi t)}{T}), sin(\frac{2(n/2)-1)\pi t)}{T}), cos(\pi t)
+\end{equation}
+
+Oznaczając oszacowane parametry odpowiednio $a_{1}$,$b_{1}$,...,$a_{n/2-1}$,$b_{n/2-1}$,$a_{n/2}$ otrzymujemy:
+
+\begin{equation}
+  \ x_{t}=a_{0}+\sum_{n/2-1}^{i=1}[a_{k}cos(2\pi kt/T)+b_{k}sin(2\pi kt/T)]+a_{n/2}cos(\pi t)
+\end{equation}
+
+Parametry $a_{k}$,$b_{k}$ odpowiadają korelacji funkcji trygonometrycznych z $x_{t}$. Wówczas przedstawiony model regresji jest skończonym szeregiem Fouriera dla dyskretnego szeregu czasowego. Periodogram z kolei jest jednym ze sposobów szacowania gęstości spektralnej przy pomocy szybkiej transformaty Fouriera. Periodogram szacowany jest zgodnie z następującym równaniem:
+
+\begin{equation}
+  \ P(\frac{k}{T})=\sqrt{a_{2}^{k}+b_{2}^{k}}
+\end{equation}
+
+Wykresy 2 oraz 3 przedstawiają wykresy szeregów czasowych odpowiednio dla podróży z Australii i USA. Szeregi, zgodnie z opisem z sekcji 1 zostały pogrupowane ze względu na cel podróży. Analizując wykresy można zauważyć, że zarówno zagregowane dane dla wszystkich typów podróży jak i te zdezagregowane zawierają pewną cykliczność oraz trend. Biorąc pod uwagę fakt, iż w pewnych fragmentach trendy nie są liniowe, na Wykresach 4 oraz 5 zaprezentowano logarytmiczne przekształcenie omawianych szeregów.
+</div>
+
+**Wykres 2 Liczba podróży z Australii do Nowej Zelandii (całkowita i w podziale na cel podróży)**
+```{r echo=FALSE}
+par(mfrow=c(2,2)) 
+
+plot(y=total_australia$Visitors,x=as.Date(total_australia$Dt),xlab="",ylab="Visitors from Australia",type = "l",main="Total Arrivals")
+plot(y=holiday_australia$Visitors,x=as.Date(holiday_australia$Dt),xlab="",ylab="Visitors from Australia",type = "l",main="Holiday")
+plot(y=friends_australia$Visitors,x=as.Date(friends_australia$Dt),xlab="",ylab="Visitors from Australia",type = "l",main="Visiting friends & relatives")
+plot(y=business_australia$Visitors,x=as.Date(business_australia$Dt),xlab="",ylab="Visitors from Australia",type = "l",main="Business")
+```
+
+**Wykres 3 Liczba podróży z USA do Nowej Zelandii (całkowita i w podziale na cel podróży)**
+```{r echo=FALSE}
+par(mfrow=c(2,2)) 
+
+plot(y=total_usa$Visitors,x=as.Date(total_usa$Dt),xlab="",ylab="Visitors from Australia",type = "l",main="Total Arrivals")
+plot(y=holiday_usa$Visitors,x=as.Date(holiday_usa$Dt),xlab="",ylab="Visitors from Australia",type = "l",main="Holiday")
+plot(y=friends_usa$Visitors,x=as.Date(friends_usa$Dt),xlab="",ylab="Visitors from Australia",type = "l",main="Visiting friends & relatives")
+plot(y=business_usa$Visitors,x=as.Date(business_usa$Dt),xlab="",ylab="Visitors from Australia",type = "l",main="Business")
+```
+
+**Wykres 4  Liczba (LOG) podróży z USA do Nowej Zelandii (całkowita i w podziale na cel podróży)**
+```{r echo=FALSE}
+par(mfrow=c(2,2)) 
+
+plot(y=log(total_australia$Visitors),x=as.Date(total_australia$Dt),xlab="",ylab="Visitors from Australia",type = "l",main="Total Arrivals")
+plot(y=log(holiday_australia$Visitors),x=as.Date(holiday_australia$Dt),xlab="",ylab="Visitors from Australia",type = "l",main="Holiday")
+plot(y=log(friends_australia$Visitors),x=as.Date(friends_australia$Dt),xlab="",ylab="Visitors from Australia",type = "l",main="Visiting friends & relatives")
+plot(y=log(business_australia$Visitors),x=as.Date(business_australia$Dt),xlab="",ylab="Visitors from Australia",type = "l",main="Business")
+```
+
+**Wykres 5 Liczba (LOG) podróży z USA do Nowej Zelandii (całkowita i w podziale na cel podróży)**
+```{r echo=FALSE}
+par(mfrow=c(2,2))
+plot(y=log(total_usa$Visitors),x=as.Date(total_usa$Dt),xlab="",ylab="Visitors from USA",type = "l",main="Total Arrivals")
+plot(y=log(holiday_usa$Visitors),x=as.Date(holiday_usa$Dt),xlab="",ylab="Visitors from USA",type = "l",main="Holiday")
+plot(y=log(friends_usa$Visitors),x=as.Date(friends_usa$Dt),xlab="",ylab="Visitors from USA",type = "l",main="Visiting friends & relatives")
+plot(y=log(business_usa$Visitors),x=as.Date(business_usa$Dt),xlab="",ylab="Visitors from USA",type = "l",main="Business")
+```
+
+<div style="text-align: justify">
+Na wykresach 6 i 7 zaprezentowano periodogramy dla podróży z Australii do Nowej Zelandii a także z USA do Nowej Zelandii. Periodogramy zostały wygenerowane zarówno dla danych zagregowanych jak i w podziale na cel podóży. 
+</div>
+
+**Wykres 6 Periodogramy podróży z Australii do Nowej Zelandii**
+```{r echo=FALSE}
+
+par(mfrow=c(2,2))
+fPeriodogram(total_australia,"Australia - Total")
+fPeriodogram(holiday_australia,"Australia - Holiday")
+fPeriodogram(friends_australia,"Australia - VF&R")
+fPeriodogram(business_australia,"Australia - Business")
+```
+
+**Wykres 7 Periodogramy podróży z USA do Nowej Zelandii**
+```{r echo=FALSE}
+
+par(mfrow=c(2,2))
+fPeriodogram(total_usa,"USA - Total")
+fPeriodogram(holiday_usa,"USA - Holiday")
+fPeriodogram(friends_usa,"USA - VF&R")
+fPeriodogram(business_usa,"USA - Business")
+```
+
+<div style="text-align: justify">
+Dwie największe częstotliwości dla obu rynków i dla wszystkich grup podróży zostały zestawione w Tabelach 1 oraz 2. Częstotliwości zostały także przeliczone na cykle (w miesiącach). 
+</div>
+**Tabela 1 Cykle podróży z Australii do Nowej Zelandii**
+```{r echo=FALSE}
+kable(PeriodCycles(list(total_australia,holiday_australia,friends_australia,business_australia),c("Total","Holiday","Visiting Friends and Relatives","Business")))
+```
+
+**Tabela 2 Cykle podróży z USA do Nowej Zelandii** 
+```{r echo=FALSE}
+kable(PeriodCycles(list(total_usa,holiday_usa,friends_usa,business_usa),c("Total","Holiday","Visiting Friends and Relatives","Business")))
+```
+
+## 3. Wnioski
+<div style="text-align: justify">
+Analiza danych z lat 2013-2017 przyniosła nieco inne rezultaty niż ta przeprowadzona na dłuższym zakresie czasowym z lat 1980-2007. Choć w przypadku danych zagregowanych największe  cykle pozostały niezmienne, w przypadku niektórych grup podróży cykle uległy wydłużeniu. Przykładem mogą być podróże wakacyjne, które w niniejszym badaniu charakteryzują się cyklem rocznym, natomiast w badaniu zaprezentowanym w artykule „Spectral analysis of seasonality in tourism demand” najbardziej charakterystycznym był cykl 4-miesięczny.  Niezmienną pod tym względem okazała się grupa podróży, których celem jest odwiedzenie bliskich i znajomych. Zarówno badanie na danych historycznych jak i na tych najnowszych dowodzi, że grupa ta charakteryzuje  się cyklicznością roczną.
+</div>
+
+
