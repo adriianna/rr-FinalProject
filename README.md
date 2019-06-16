@@ -3,6 +3,7 @@
 The following project contains spectral analysis of the sesonality in New Zealand tourism demand from Australia and the USA. 
 
 #File descriptions
+
 README.md - this file
 
 ## Installation
