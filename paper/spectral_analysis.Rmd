@@ -20,7 +20,7 @@ Głównym celem niniejszego badania jest pokazanie, że analiza danych zdezagreg
 </div>
 
 **Wykres 1 Liczba podróży z Australii do Nowej Zelandii (całkowita i w podziale na cel podróży)**
-```{r, echo=FALSE, message = FALSE}
+```{r, echo=FALSE, message = FALSE, error=FALSE, warning=FALSE}
 message(params$miny)
 minyear <<- params$miny
 maxyear <<- params$maxy
