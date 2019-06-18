@@ -1,0 +1,24 @@
+version: 2
+jobs:
+  run_tests:
+    docker:
+    - image: rocker/tidyverse:latest
+    steps:
+    - checkout
+    - run:
+        name: Check package dependencies
+        command: Rscript check_includes.R
+    - run:
+        name: Prepare test environment
+        command: mkdir -p /root/project/src/tests/out/unittests/
+    - run:
+        name: Run unit tests
+        command: Rscript run_tests.R
+    - store_test_results:
+        path: /root/project/src/tests/out
+        when: always
+workflows:
+  test:
+    jobs:
+    - run_tests
+  version: 2
