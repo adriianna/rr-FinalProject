@@ -7,7 +7,7 @@ checkDateRange = function(start, end)
   
   if (missing(start) | missing(end))
   {
-    result <- "Insert date range (years):"
+    result <- "Insert date range (years) according to the following formula: http://3.83.41.109:8901/hello?start=XXXX&end=XXXX"
   }
   
   else
