@@ -14,5 +14,5 @@ The following project contains spectral analysis of the sesonality in New Zealan
 ## Project on AWS - API instruction
 
 1) Open Hello link: http://3.83.41.109:8901/hello
-2) Insert date range (years) according to the following formula: http://3.83.41.109:8901/hello?start=START_YEAR&end=END_YEAR
+2) Insert date range (years) according to the following formula: http://3.83.41.109:8901/hello?start=2013&end=2017
 3) Click on Display report hyperlink to see html report
