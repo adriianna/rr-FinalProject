@@ -1,7 +1,7 @@
 testthat::test_that("Test checkDateRange when two correct years provided",
                     {
                       result = checkDateRange(2015,2017)
-                      expected= "<html><body>Display <a href=\"http://localhost:8901/markdown?end=2017&start=2015\" >report</a></body></html>"
+                      expected= "<html><body>Display <a href=\"http://3.83.41.109:8901/markdown?end=2017&start=2015\" >report</a></body></html>"
                       testthat::expect_identical(result,expected)
                     }
                     )
