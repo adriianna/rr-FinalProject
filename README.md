@@ -1,4 +1,4 @@
-# Final Procjet for Reproducible research 2019 classes 
+# Final Procjet for Reproducible research classes 
 
 The following project contains spectral analysis of the sesonality in New Zealand tourism demand from Australia and the USA. 
 
